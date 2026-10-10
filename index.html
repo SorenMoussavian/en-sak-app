@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10181b">
+<meta name="description" content="En sak i taget. Ett lugnt, privat fokusverktyg som fungerar offline.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>En sak — fokus utan brus</title>
+<style>
+:root{color-scheme:dark;--bg:#0d1417;--panel:#152024;--raised:#1c292e;--text:#eaf1f0;--muted:#a6bab9;--line:#33454a;--accent:#b0ddc7;--accentText:#122a21;--alert:#ffd4be;--shadow:0 20px 50px #0004}
+@media (prefers-color-scheme:light){:root{color-scheme:light;--bg:#f1f5f3;--panel:#fff;--raised:#eaf0ed;--text:#183032;--muted:#496264;--line:#c5d4d0;--accent:#256b57;--accentText:#fff;--alert:#843f24;--shadow:0 20px 50px #142b2615}}
+*{box-sizing:border-box}html{min-width:320px}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:default}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}button{border-radius:13px;padding:11px 15px;min-height:44px;border:1px solid var(--line);background:var(--raised);color:var(--text);font-weight:620}button.primary{background:var(--accent);color:var(--accentText);border-color:transparent}button.ghost{background:transparent}button.danger{color:var(--alert)}.icon-button{min-width:44px;padding:10px}.shell{max-width:930px;margin:0 auto;padding:30px 22px 90px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px}.mark{display:grid;place-items:center;border:1px solid var(--line);border-radius:15px;width:48px;height:48px;font-size:24px;color:var(--accent)}.eyebrow{text-transform:uppercase;letter-spacing:.17em;font-size:11px;font-weight:750;color:var(--muted)}h1,h2,h3,p{margin:0}h1{font-size:24px;letter-spacing:-.045em}h2{font-size:clamp(29px,5.5vw,50px);line-height:1.14;letter-spacing:-.055em;font-weight:675}h3{font-size:18px;letter-spacing:-.02em}.subtle{color:var(--muted)}.nav{display:flex;gap:8px;margin:39px 0 23px}.nav button[aria-selected=true]{background:var(--accent);color:var(--accentText);border-color:transparent}.focus{background:var(--panel);border:1px solid var(--line);border-radius:27px;padding:clamp(24px,5vw,48px);box-shadow:var(--shadow);min-height:340px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}.focus-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.dot{display:inline-block;background:var(--accent);width:9px;height:9px;border-radius:50%;margin-right:8px}.focus-title{max-width:740px;overflow-wrap:anywhere}.step{margin-top:22px;padding:18px 21px;border-left:3px solid var(--accent);background:var(--raised);border-radius:0 15px 15px 0;overflow-wrap:anywhere}.step small{display:block;color:var(--muted);font-size:12px;margin-bottom:5px;letter-spacing:.04em}.step p{font-size:clamp(17px,3vw,21px);font-weight:550}.actions{display:flex;gap:10px;flex-wrap:wrap}.caption{font-size:13px;color:var(--muted)}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 13px}.section-head h3{font-size:18px}.list{display:grid;gap:10px}.item{background:var(--panel);border:1px solid var(--line);padding:17px 18px;border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:16px}.item-text{min-width:0;flex:1;overflow-wrap:anywhere}.item-title{font-weight:680}.item-step{color:var(--muted);font-size:13px;margin-top:3px}.item-buttons{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.item-buttons button{font-size:13px;padding:8px 11px;min-height:38px}.empty{padding:20px;border:1px dashed var(--line);border-radius:16px;color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px}.panel>p{margin-top:12px}.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.divider{border:0;border-top:1px solid var(--line);margin:21px 0}.footer{margin-top:50px;text-align:center;color:var(--muted);font-size:12px}.hidden,[hidden]{display:none!important}.form-overlay{position:fixed;inset:0;z-index:20;background:#0009;display:grid;place-items:center;padding:16px}.dialog{width:min(100%,490px);max-height:calc(100dvh - 32px);overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:23px;padding:27px;box-shadow:var(--shadow)}.dialog h3{font-size:24px;margin-bottom:18px}.field{display:grid;gap:7px;margin:17px 0}.field label{font-size:14px;font-weight:670}.field input,.field textarea{width:100%;min-height:47px;padding:12px 14px;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:12px}.field textarea{resize:vertical;min-height:88px}.hint{font-size:12px;color:var(--muted)}.dialog-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:25px}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:11px 18px;border-radius:13px;z-index:30;font-size:14px;box-shadow:var(--shadow);max-width:calc(100vw - 30px);text-align:center}.storage-alert button{display:block;margin-top:10px}.storage-alert{border:1px solid var(--alert);color:var(--alert);border-radius:12px;padding:12px 14px;margin:22px 0;font-size:14px} .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:560px){.shell{padding:21px 15px 65px}.top{align-items:flex-start}.brand h1{font-size:21px}.top>.primary{font-size:13px;padding:9px 12px}.nav{margin:30px 0 17px;flex-wrap:wrap}.nav button{flex:1}.focus{border-radius:21px;min-height:310px}.item{align-items:flex-start;flex-direction:column}.item-buttons{justify-content:flex-start}.actions button{flex:1}.focus-top .caption{font-size:12px}}
+@media(prefers-reduced-motion:no-preference){button{transition:background .15s,transform .15s}button:active{transform:scale(.98)}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+ <div class="brand"><div class="mark" aria-hidden="true">◈</div><div><div class="eyebrow">Lugn produktivitet</div><h1>En sak<span style="color:var(--accent)">.</span></h1></div></div>
+ <button id="addBtn" class="primary" type="button">＋ Lägg till</button>
+</header>
+<div id="storageAlert" class="storage-alert" role="alert" hidden></div>
+<nav class="nav" aria-label="Vy"><button id="tabFocus" aria-selected="true" aria-controls="viewFocus">Fokus</button><button id="tabList" aria-selected="false" aria-controls="viewList">Översikt</button><button id="tabData" aria-selected="false" aria-controls="viewData">Data & säkerhet</button></nav>
+<main>
+<section id="viewFocus">
+ <div class="focus" id="focusCard" aria-live="polite" aria-atomic="true"></div>
+ <div class="section-head"><h3>På tur</h3><span class="caption" id="queueCount"></span></div>
+ <div id="queuePreview" class="list"></div>
+</section>
+<section id="viewList" hidden>
+ <div class="section-head" style="margin-top:6px"><div><h2 style="font-size:30px">Din översikt</h2><p class="subtle" style="margin-top:8px">Samla uppgifterna här. Arbeta med en i taget.</p></div></div>
+ <div class="section-head"><h3>Att göra</h3><span class="caption" id="pendingCount"></span></div><div id="pendingList" class="list"></div>
+ <div class="section-head"><h3>Avslutade</h3><span class="caption" id="doneCount"></span></div><div id="doneList" class="list"></div>
+</section>
+<section id="viewData" hidden>
+ <div class="panel"><h2 style="font-size:30px">Dina data. Din kontroll.</h2><p class="subtle">Alla uppgifter sparas endast i den här webbläsaren på den här enheten. Ingen inloggning, server, analys eller spårning.</p>
+ <hr class="divider"><h3>Säkerhetskopiera</h3><p class="subtle">Exportera en JSON-fil regelbundet. Webbläsardata kan försvinna när appdata rensas eller webbläsaren avinstalleras.</p><div class="row" style="margin-top:16px"><button id="exportBtn" class="primary">↓ Exportera backup</button><button id="importBtn">↑ Importera backup</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
+ <hr class="divider"><h3>Rensa</h3><p class="subtle">Borttagning sker bara lokalt och kan inte ångras utan en tidigare backup.</p><div class="row" style="margin-top:16px"><button id="deleteDoneBtn" class="danger">Ta bort avslutade</button><button id="resetBtn" class="danger">Radera alla uppgifter</button></div>
+ </div>
+</section>
+</main>
+<footer class="footer">Ingen press. Inga poäng. Bara nästa lilla handling. · v1.2</footer>
+</div>
+<div class="form-overlay" id="editorOverlay" hidden>
+ <form id="editorForm" class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+ <h3 id="dialogTitle">Lägg till uppgift</h3>
+ <div class="field"><label for="titleInput">Vad vill du få gjort?</label><input id="titleInput" required maxlength="140" autocomplete="off" placeholder="Exempel: Ordna försäkringsärendet"></div>
+ <div class="field"><label for="stepInput">Nästa lilla handling <span class="subtle">(valfri)</span></label><textarea id="stepInput" maxlength="400" placeholder="Exempel: Leta upp försäkringsbrevet"></textarea><span class="hint">Skriv en handling som du kan göra direkt — inte hela projektplanen.</span></div>
+ <div class="dialog-actions"><button id="cancelEdit" type="button" class="ghost">Avbryt</button><button class="primary" type="submit" id="saveTaskBtn">Spara</button></div>
+ </form>
+</div>
+<div id="toast" class="toast" role="status" hidden></div>
+<script>
+'use strict';
+(() => {
+const STORAGE_KEY='en-sak-v1';
+const MAX_TASKS=2000;
+const $=(id)=>document.getElementById(id);
+const initial=()=>({version:1,tasks:[],activeId:null});
+let savedPayload=null; let corruptPayload=null; let state=initial(); let currentView='Focus'; let editingId=null; let returnFocus=null; let toastTimer=null; let canPersist=true;
+const dateString=()=>new Date().toISOString();
+const createId=()=> (globalThis.crypto && typeof crypto.randomUUID==='function')?crypto.randomUUID() : 'task-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+const isPlainObj=(x)=>!!x&&typeof x==='object'&&!Array.isArray(x);
+function validate(raw){
+ if(!isPlainObj(raw)||raw.version!==1||!Array.isArray(raw.tasks)||raw.tasks.length>MAX_TASKS)throw Error('Okänt eller felaktigt backupformat.');
+ const ids=new Set();
+ const tasks=raw.tasks.map(t=>{
+  if(!isPlainObj(t)||typeof t.id!=='string'||t.id.length<1||t.id.length>100||ids.has(t.id)||typeof t.title!=='string'||!t.title.trim()||t.title.length>140||typeof t.step!=='string'||t.step.length>400||!['todo','done'].includes(t.status)||typeof t.createdAt!=='string'||t.createdAt.length>60||!(t.doneAt===null||typeof t.doneAt==='string'&&t.doneAt.length<=60))throw Error('Backupen innehåller en ogiltig uppgift.');
+  ids.add(t.id);return {id:t.id,title:t.title.trim(),step:t.step.trim(),status:t.status,createdAt:t.createdAt,doneAt:t.doneAt};
+ });
+ if(!(raw.activeId===null||typeof raw.activeId==='string'))throw Error('Ogiltig fokusmarkering.');
+ if(raw.activeId!==null&&!tasks.some(t=>t.id===raw.activeId&&t.status==='todo'))throw Error('Fokusmarkeringen matchar ingen aktiv uppgift.');
+ return {version:1,tasks,activeId:raw.activeId};
+}
+function downloadPayload(payload,filename){const url=URL.createObjectURL(new Blob([payload],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function notify(message){const el=$('toast');el.textContent=message;el.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{el.hidden=true},3100)}
+function storageFail(text){canPersist=false;const el=$('storageAlert');el.textContent=text;el.hidden=false;}
+try{savedPayload=localStorage.getItem(STORAGE_KEY);if(savedPayload)state=validate(JSON.parse(savedPayload));localStorage.setItem('en-sak-storage-check','1');localStorage.removeItem('en-sak-storage-check');}catch(e){if(e instanceof SyntaxError||/Backup|Okänt|Fokusmarkering|ogiltig/.test(e.message)){corruptPayload=savedPayload;storageFail('Sparade data har ett ogiltigt format och har INTE skrivits över. Hämta originaldata innan du gör något med webbläsarens lagring.');if(corruptPayload!==null)$('storageAlert').append(button('Hämta originaldata',()=>{downloadPayload(corruptPayload,'en-sak-originaldata-'+new Date().toISOString().slice(0,10)+'.json')},'ghost'));}else{storageFail('Webbläsaren tillåter inte lokal lagring. Använd appen via HTTPS och aktivera webbplatsdata för att spara uppgifter.');}}
+function commit(mutator){
+ if(!canPersist){notify('Kan inte spara: lagring är inte tillgänglig.');return false}
+ // A background tab can update localStorage while this tab still shows an older snapshot.
+ // Do not apply an old-state mutation over that newer value without reloading it first.
+ let live;
+ try{live=localStorage.getItem(STORAGE_KEY)}catch(e){storageFail('Kan inte läsa befintliga data. Inget har skrivits över.');return false}
+ if(live!==savedPayload){
+  try{const latest=live===null?initial():validate(JSON.parse(live));state=latest;savedPayload=live;render();notify('Uppgifterna ändrades i en annan flik. Kontrollera listan och tryck Spara igen.');}
+  catch(e){storageFail('Uppgifterna ändrades till ett ogiltigt format i en annan flik. Inget har skrivits över. Ladda om sidan för att rädda originaldata.');}
+  return false;
+ }
+ const next=structuredClone(state);mutator(next);
+ let valid,serialized;
+ try{valid=validate(next);serialized=JSON.stringify(valid);localStorage.setItem(STORAGE_KEY,serialized)}
+ catch(e){storageFail('Kunde inte spara. Befintliga uppgifter är oförändrade. Kontrollera ledigt utrymme och webbläsarinställningar.');return false}
+ state=valid;savedPayload=serialized;render();return true;
+}
+function node(tag,cls,text){const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el}
+function button(text,handler,cls=''){const b=node('button',cls,text);b.type='button';b.addEventListener('click',handler);return b}
+const pending=()=>state.tasks.filter(t=>t.status==='todo');
+const done=()=>state.tasks.filter(t=>t.status==='done');
+function selectFocus(id){if(commit(s=>{s.activeId=id;})){switchView('Focus');notify('Fokus valt.')}}
+function markDone(id){if(commit(s=>{const t=s.tasks.find(x=>x.id===id);if(!t)return;t.status='done';t.doneAt=dateString();if(s.activeId===id)s.activeId=null;}))notify('Klart. Ta nästa när du vill.');}
+function restore(id){if(commit(s=>{const t=s.tasks.find(x=>x.id===id);if(!t)return;t.status='todo';t.doneAt=null;}))notify('Tillbaka i listan.');}
+function removeTask(id){const t=state.tasks.find(x=>x.id===id);if(!t)return;if(!confirm('Ta bort ”'+t.title+'”? Åtgärden kan inte ångras.'))return;if(commit(s=>{s.tasks=s.tasks.filter(x=>x.id!==id);if(s.activeId===id)s.activeId=null;}))notify('Uppgift borttagen.');}
+function openEditor(id=null){editingId=id;returnFocus=document.activeElement;const t=state.tasks.find(x=>x.id===id);$('dialogTitle').textContent=t?'Redigera uppgift':'Lägg till uppgift';$('saveTaskBtn').textContent=t?'Spara ändringar':'Lägg till';$('titleInput').value=t?.title||'';$('stepInput').value=t?.step||'';$('editorOverlay').hidden=false;document.body.style.overflow='hidden';$('titleInput').focus()}
+function closeEditor(){$('editorOverlay').hidden=true;document.body.style.overflow='';editingId=null;if(returnFocus?.isConnected)returnFocus.focus();else $('addBtn').focus()}
+$('editorForm').addEventListener('submit',e=>{e.preventDefault();const title=$('titleInput').value.trim();const step=$('stepInput').value.trim();if(!title){$('titleInput').focus();return}if(title.length>140||step.length>400)return;const id=editingId;if(!id&&state.tasks.length>=MAX_TASKS){notify('Gränsen är 2 000 uppgifter. Ta bort något innan du lägger till fler.');return}const ok=commit(s=>{if(id){const t=s.tasks.find(x=>x.id===id);if(t){t.title=title;t.step=step;}}else{const newId=createId();s.tasks.push({id:newId,title,step,status:'todo',createdAt:dateString(),doneAt:null});if(!s.activeId)s.activeId=newId;}});if(ok){closeEditor();notify(id?'Uppgift uppdaterad.':'Uppgift sparad.');}});
+$('cancelEdit').addEventListener('click',closeEditor);
+$('editorOverlay').addEventListener('mousedown',e=>{if(e.target===$('editorOverlay'))closeEditor()});
+$('editorOverlay').addEventListener('keydown',e=>{if(e.key==='Tab'){const f=[...$('editorOverlay').querySelectorAll('input,textarea,button')].filter(el=>!el.disabled);const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('editorOverlay').hidden)closeEditor();else if(e.key.toLowerCase()==='n'&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)&&$('editorOverlay').hidden)openEditor()});
+$('addBtn').addEventListener('click',()=>openEditor());
+function renderFocus(){const card=$('focusCard');card.replaceChildren();const active=state.tasks.find(t=>t.id===state.activeId&&t.status==='todo');const top=node('div','focus-top');const tag=node('div','eyebrow');const badge=node('span','dot');tag.append(badge,document.createTextNode(active?'Ditt enda fokus':'Plats för nästa sak'));top.append(tag,node('span','caption',active?'En sak i taget':'Du väljer takten'));card.append(top);
+ const center=node('div');if(active){center.append(node('h2','focus-title',active.title));const step=node('div','step');step.append(node('small','', 'NÄSTA LILLA HANDLING'),node('p','',active.step||'Bestäm det allra första konkreta steget.'));center.append(step)}else{center.append(node('h2','focus-title','Ingen aktiv uppgift.'));center.append(node('p','subtle',pending().length?'Välj en sak nedan när du är redo.':'Lägg till din första uppgift. Resten kan vänta.'));center.lastChild.style.marginTop='19px'}card.append(center);
+ const actions=node('div','actions');if(active){actions.append(button('✓ Färdig',()=>markDone(active.id),'primary'),button('Redigera',()=>openEditor(active.id)),button('Släpp fokus',()=>{if(commit(s=>{s.activeId=null}))notify('Fokus släppt.');},'ghost'));}else if(!pending().length){actions.append(button('＋ Lägg till första uppgiften',()=>openEditor(),'primary'))}else{actions.append(button('Visa alla uppgifter',()=>switchView('List'),'primary'))}card.append(actions);
+ const others=pending().filter(t=>t.id!==state.activeId);$('queueCount').textContent=others.length===1?'1 uppgift':others.length+' uppgifter';const preview=$('queuePreview');preview.replaceChildren();if(!others.length){preview.append(node('div','empty',active?'Inget annat väntar.':'Din lista är tom.'))}else{for(const t of others.slice(0,3))preview.append(makeItem(t,'preview'));if(others.length>3)preview.append(button('Visa ytterligare '+(others.length-3),()=>switchView('List'),'ghost'))}
+}
+function makeItem(t,mode){const item=node('div','item');const info=node('div','item-text');info.append(node('div','item-title',t.title));if(t.step)info.append(node('div','item-step',t.step));item.append(info);const buttons=node('div','item-buttons');if(t.status==='todo'){if(t.id===state.activeId){buttons.append(node('span','caption','● Fokuserad'));}else{buttons.append(button('Fokusera',()=>selectFocus(t.id),'primary'))}if(mode==='full')buttons.append(button('Redigera',()=>openEditor(t.id)));}else{buttons.append(button('Återställ',()=>restore(t.id)))}if(mode==='full'||mode==='done')buttons.append(button('Ta bort',()=>removeTask(t.id),'ghost danger'));item.append(buttons);return item}
+function renderList(){const todo=pending(),finished=done().reverse();$('pendingCount').textContent=todo.length+' st';$('doneCount').textContent=finished.length+' st';$('pendingList').replaceChildren();$('doneList').replaceChildren();if(!todo.length)$('pendingList').append(node('div','empty','Inga väntande uppgifter.'));else for(const t of todo)$('pendingList').append(makeItem(t,'full'));if(!finished.length)$('doneList').append(node('div','empty','Här syns det du avslutat.'));else for(const t of finished)$('doneList').append(makeItem(t,'done'))}
+function render(){renderFocus();renderList();}
+function switchView(view){currentView=view;for(const key of ['Focus','List','Data']){$('view'+key).hidden=key!==view;$('tab'+key).setAttribute('aria-selected',String(key===view));} if(document.activeElement?.id?.startsWith('tab'))$('tab'+view).focus();}
+for(const key of ['Focus','List','Data'])$('tab'+key).addEventListener('click',()=>switchView(key));
+$('exportBtn').addEventListener('click',()=>{if(corruptPayload!==null){notify('Ordinarie export är spärrad. Använd Hämta originaldata.');return}downloadPayload(JSON.stringify(state,null,2),'en-sak-backup-'+new Date().toISOString().slice(0,10)+'.json');notify('Backup skapad. Förvara filen säkert.');});
+$('importBtn').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',async e=>{const file=e.target.files?.[0];e.target.value='';if(!file)return;if(file.size>8*1024*1024){notify('Backupen är för stor (max 8 MB).');return}let imported;try{imported=validate(JSON.parse(await file.text()))}catch(err){notify('Import avbruten: '+err.message);return}if(!confirm('Ersätta alla nuvarande uppgifter med '+imported.tasks.length+' uppgifter från backupen? Exportera först om du vill behålla nuvarande.'))return;if(commit(s=>{s.tasks=imported.tasks;s.activeId=imported.activeId})){switchView('Focus');notify('Backup importerad.')}});
+$('deleteDoneBtn').addEventListener('click',()=>{const amount=done().length;if(!amount){notify('Inga avslutade uppgifter att ta bort.');return}if(!confirm('Ta bort '+amount+' avslutade uppgifter permanent?'))return;if(commit(s=>{s.tasks=s.tasks.filter(t=>t.status!=='done')}))notify('Avslutade uppgifter borttagna.');});
+$('resetBtn').addEventListener('click',()=>{if(!state.tasks.length){notify('Listan är redan tom.');return}if(!confirm('Radera ALLA uppgifter permanent från den här webbläsaren?'))return;if(!confirm('Sista kontrollen: har du exporterat en backup om du vill kunna ångra dig?'))return;if(commit(s=>{s.tasks=[];s.activeId=null})){switchView('Focus');notify('Alla uppgifter raderade.')}});
+render();
+if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+})();
+</script>
+</body>
+</html>

@@ -2,6 +2,5 @@ services:
   - type: web
     name: en-sak-fokus
     runtime: static
-    buildCommand: echo ready
+    buildCommand: echo 'En sak static release: no build required'
     staticPublishPath: .
-    autoDeployTrigger: commit
