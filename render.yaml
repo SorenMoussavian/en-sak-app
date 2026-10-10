@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: en-sak-fokus
+    runtime: static
+    buildCommand: echo ready
+    staticPublishPath: .
+    autoDeployTrigger: commit
